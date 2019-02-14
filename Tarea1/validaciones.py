@@ -65,8 +65,8 @@ def summingSeries_function(func):
 		try:
 			print("Prueba " + str(index+1))
 
-			res = timming(func,n, index, 0.5)
-			#print(res, results_ex2[index])
+			res = func(n)
+			
 			assert res == results_ex2[index]
 
 			print("Prueba " + str(index+1) + "[CORRECTA]")
@@ -82,8 +82,9 @@ def primeCount_function(func):
 		try:
 			print("Prueba " + str(index+1))
 
-			res = timming(func,n, index, 0.5)
-			assert res == results_ex3[index]
+			#res = timming(func,n, index, 0.5)
+			#assert res == results_ex3[index]
+			res =  func(n)
 
 			print("Prueba " + str(index+1) + "[CORRECTA]")
 
@@ -98,19 +99,12 @@ def rotIzquierda_function(func):
 		try:
 			print("Prueba " + str(index+1))
 
-			p = Pool(processes=1)
-			out = -1
-			res = p.apply_async(func, args=[n,rotations_ex5[index]])
+			res = func(n,rotations_ex5[index])
 
-
-			out = res.get(0.5)  
-		
-
-			assert out == results_ex5[index]
+			assert res == results_ex5[index]
 
 			print("Prueba " + str(index+1) + "[CORRECTA]")
-		except multiprocessing.TimeoutError:
-				print("Prueba " + str(index+1) + "[FALLO: TIMEOUT]")
+			
 		except:
 			print("Prueba " + str(index+1) + "[FALLO: Salida incorecta]")
 
